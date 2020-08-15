@@ -1,13 +1,12 @@
 import logging
+import os
 
-CLIENT_ID = "YOUR_SMART_HOME_NAME"
-CLIENT_SECRET = "YOUR_SECRET"
+CLIENT_ID = os.environ['ALICE_HOME_NAME"']
+CLIENT_SECRET = os.environ['ALICE_CLIENT_SECRET']
 USERS_DIRECTORY = "/users"
 TOKENS_DIRECTORY = "/tokens"
 DEVICES_DIRECTORY = "/devices"
-# USERS_DIRECTORY = "/home/alice/users"
-# TOKENS_DIRECTORY = "/home/alice/tokens"
-# DEVICES_DIRECTORY = "/home/alice/devices"
+
 
 # Uncomment to enable logging
 #LOG_FILE = "/var/log/alice.log"
