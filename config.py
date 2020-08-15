@@ -3,9 +3,9 @@ import os
 
 CLIENT_ID = os.environ['ALICE_HOME_NAME']
 CLIENT_SECRET = os.environ['ALICE_CLIENT_SECRET']
-USERS_DIRECTORY = "/users"
-TOKENS_DIRECTORY = "/tokens"
-DEVICES_DIRECTORY = "/devices"
+USERS_DIRECTORY = "users"
+TOKENS_DIRECTORY = "tokens"
+DEVICES_DIRECTORY = "devices"
 
 
 # Uncomment to enable logging
