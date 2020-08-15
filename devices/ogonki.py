@@ -12,6 +12,8 @@ def query(capability_type, instance):
 
 def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
-        if value is False:
+        if value:
+            plug.off()
+        else:
             plug.on()
         return "DONE"
