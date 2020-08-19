@@ -9,7 +9,7 @@ DEVICES_DIRECTORY = "devices"
 
 
 # Uncomment to enable logging
-#LOG_FILE = "/var/log/alice.log"
-#LOG_LEVEL = logging.DEBUG
-#LOG_FORMAT = "%(asctime)s %(remote_addr)s %(user)s %(message)s"
-#LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+LOG_FILE = "/var/log/alice.log"
+LOG_LEVEL = logging.DEBUG
+LOG_FORMAT = "%(asctime)s %(remote_addr)s %(user)s %(message)s"
+LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
