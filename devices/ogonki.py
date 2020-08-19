@@ -1,8 +1,8 @@
-import miio
 import os
+from miio import ChuangmiPlug
 
 
-plug = miio.ChuangmiPlug(ip=os.environ['OGONKI_IP'], token=os.environ['OGONKI_TOKEN'])
+plug = ChuangmiPlug(ip=os.environ['OGONKI_IP'], token=os.environ['OGONKI_TOKEN'])
 
 
 def query(capability_type, instance):
