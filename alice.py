@@ -38,7 +38,7 @@ last_code_time = None
 
 app = Flask(__name__)
 
-logger.info("Started.", extra={'remote_addr': '-', 'user': '-'})
+logger.info("Started.")
 
 
 @app.route('/css/<path:path>')
@@ -61,14 +61,12 @@ def auth():
                 or request.args["response_type"] != "code"
                 or "client_id" not in request.args
                 or request.args["client_id"] != config.CLIENT_ID):
-            logger.warning("invalid auth request",
-                           extra={'remote_addr': request.remote_addr, 'user': request.form['username']})
+            logger.warning("invalid auth request")
             return "Invalid request", 400
         # Check login and password
         user = get_user(request.form["username"])
         if user is None or user["password"] != request.form["password"]:
-            logger.warning("invalid password",
-                           extra={'remote_addr': request.remote_addr, 'user': request.form['username']})
+            logger.warning("invalid password")
             return render_template('login.html', login_failed=True)
 
         # Generate random code and remember this user and time
@@ -79,7 +77,7 @@ def auth():
         params = {'state': request.args['state'],
                   'code': last_code,
                   'client_id': config.CLIENT_ID}
-        logger.info("generated code", extra={'remote_addr': request.remote_addr, 'user': request.form['username']})
+        logger.info("generated code")
         return redirect(request.args["redirect_uri"] + '?' + urllib.parse.urlencode(params))
 
 
@@ -92,22 +90,22 @@ def token():
             or "client_id" not in request.form
             or request.form["client_id"] != config.CLIENT_ID
             or "code" not in request.form):
-        logger.warning("invalid token request", extra={'remote_addr': request.remote_addr, 'user': last_code_user})
+        logger.warning("invalid token request")
         return "Invalid request", 400
     # Check code
     if request.form["code"] != last_code:
-        logger.warning("invalid code", extra={'remote_addr': request.remote_addr, 'user': last_code_user})
+        logger.warning("invalid code")
         return "Invalid code", 403
     # Check time
     if time() - last_code_time > 10:
-        logger.warning("code is too old", extra={'remote_addr': request.remote_addr, 'user': last_code_user})
+        logger.warning("code is too old")
         return "Code is too old", 403
     # Generate and save random token with username
     access_token = random_string(32)
     access_token_file = os.path.join(config.TOKENS_DIRECTORY, access_token)
     with open(access_token_file, mode='wb') as f:
         f.write(last_code_user.encode('utf-8'))
-    logger.info("access granted", extra={'remote_addr': request.remote_addr, 'user': last_code_user})
+    logger.info("access granted")
     # Return just token without any expiration time
     return jsonify({'access_token': access_token})
 
@@ -133,7 +131,7 @@ def unlink():
     access_token_file = os.path.join(config.TOKENS_DIRECTORY, access_token)
     if os.path.isfile(access_token_file) and os.access(access_token_file, os.R_OK):
         os.remove(access_token_file)
-        logger.debug("token %s revoked", access_token, extra={'remote_addr': request.remote_addr, 'user': user_id})
+        logger.debug("token %s revoked", access_token)
     return jsonify({'request_id': request_id})
 
 
@@ -144,7 +142,7 @@ def devices_list():
     if user_id is None:
         return "Access denied", 403
     request_id = request.headers.get('X-Request-Id')
-    logger.debug("devices request %s", request_id, extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("devices request %s", request_id)
     # Load user info
     user = get_user(user_id)
     devices = []
@@ -153,8 +151,7 @@ def devices_list():
         device = get_device(device_id)
         devices.append(device)
     result = {'request_id': request_id, 'payload': {'user_id': user_id, 'devices': devices}}
-    logger.debug("devices response: \r\n%s", json.dumps(result, indent=4),
-                 extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("devices response: \r\n%s", json.dumps(result, indent=4))
     return jsonify(result)
 
 
@@ -167,8 +164,7 @@ def query():
     request_id = request.headers.get('X-Request-Id')
     user = get_user(user_id)
     r = request.get_json()
-    logger.debug("query request %s: \r\n%s", request_id, json.dumps(r, indent=4),
-                 extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("query request %s: \r\n%s", request_id, json.dumps(r, indent=4))
     devices_request = r["devices"]
     result = {'request_id': request_id, 'payload': {'devices': []}}
     # For each requested device...
@@ -200,8 +196,7 @@ def query():
                 }
             })
         result['payload']['devices'].append(new_device)
-    logger.debug("query response: \r\n%s", json.dumps(result, indent=4),
-                 extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("query response: \r\n%s", json.dumps(result, indent=4))
     return jsonify(result)
 
 
@@ -214,8 +209,7 @@ def action():
     request_id = request.headers.get('X-Request-Id')
     user = get_user(user_id)
     r = request.get_json()
-    logger.debug("action request %s: \r\n%s", request_id, json.dumps(r, indent=4),
-                 extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("action request %s: \r\n%s", request_id, json.dumps(r, indent=4))
     devices_request = r["payload"]["devices"]
     result = {'request_id': request_id, 'payload': {'devices': []}}
     # For each requested device...
@@ -246,8 +240,7 @@ def action():
                 }
             })
         result['payload']['devices'].append(new_device)
-    logger.debug("action response: \r\n%s", json.dumps(result, indent=4),
-                 extra={'remote_addr': request.remote_addr, 'user': user_id})
+    logger.debug("action response: \r\n%s", json.dumps(result, indent=4))
     return jsonify(result)
 
 
@@ -260,7 +253,7 @@ def get_user(username):
             data = json.loads(text)
             return data
     else:
-        logger.warning("user not found", extra={'remote_addr': request.remote_addr, 'user': username})
+        logger.warning("user not found")
         return None
 
 
@@ -271,7 +264,7 @@ def get_token():
     if len(parts) == 2 and parts[0].lower() == 'bearer':
         return parts[1]
     else:
-        logger.warning("invalid token: %s", auth, extra={'remote_addr': request.remote_addr, 'user': '-'})
+        logger.warning("invalid token: %s", auth)
         return None
 
 
