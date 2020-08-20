@@ -41,6 +41,11 @@ app = Flask(__name__)
 logger.info("Started.")
 
 
+@app.before_first_request
+def prepare():
+    query()
+
+
 @app.route('/css/<path:path>')
 def send_css(path):
     return send_from_directory('css', path)
