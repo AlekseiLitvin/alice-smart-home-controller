@@ -25,6 +25,7 @@ if hasattr(config, 'LOG_FILE'):
     logging.basicConfig(level=config.LOG_LEVEL,
                         format=config.LOG_FORMAT,
                         datefmt=config.LOG_DATE_FORMAT,
+                        filename=config.LOG_FILE,
                         filemode='a')
 logger = logging.getLogger()
 
