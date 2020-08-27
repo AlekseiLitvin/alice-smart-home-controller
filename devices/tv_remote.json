@@ -9,7 +9,7 @@
             "retrievable": false
         },
         {
-            "type": "devices.capabilities.toggle",
+            "type": "devices.capabilities.mode",
             "retrievable": false,
             "parameters": {
                 "instance": "input_source",
