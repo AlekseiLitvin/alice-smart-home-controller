@@ -1,4 +1,5 @@
 import os
+import time
 
 import miio
 
@@ -20,10 +21,13 @@ def action(capability_type, instance, value, relative):
 
 
 def execute_command(name, repeats=1):
+    if repeats > 10:
+        repeats = 10
     for command in commands:
         if command['name'] == name:
             for _ in range(repeats):
                 remote.play_raw(command['code'])
+                time.sleep(0.09)
 
 
 commands = [

@@ -12,7 +12,16 @@
             "type": "devices.capabilities.toggle",
             "retrievable": false,
             "parameters": {
-                "instance": "hdmi_output"
+                "instance": "input_source",
+                "modes": [
+                    {
+                        "value": "three"
+                    },
+                    {
+                        "value": "four"
+                    }
+                ]
+
             }
         },
         {
