@@ -3,6 +3,7 @@
     "description": "Инфрокрасный пульт от телевизора",
     "room": "Берлога",
     "type": "devices.types.media_device.receiver",
+    "retrievable": false,
     "capabilities": [
         {
             "type": "devices.capabilities.on_off",
