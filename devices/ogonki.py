@@ -5,7 +5,6 @@ import logging
 ip = os.environ['OGONKI_IP']
 token = os.environ['OGONKI_TOKEN']
 plug = ChuangmiPlug(ip=ip, token=token, debug=True)
-logger = logging.getLogger()
 
 
 def query(capability_type, instance):

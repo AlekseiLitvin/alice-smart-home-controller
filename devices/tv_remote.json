@@ -1,0 +1,33 @@
+{
+    "name": "Телевизор",
+    "description": "Инфрокрасный пульт от телевизора",
+    "room": "Берлога",
+    "type": "devices.types.media_device.receiver",
+    "capabilities": [
+        {
+            "type": "devices.capabilities.on_off",
+            "retrievable": false
+        },
+        {
+            "type": "devices.capabilities.toggle",
+            "retrievable": false,
+            "parameters": {
+                "instance": "hdmi_output"
+            }
+        },
+        {
+            "type": "devices.capabilities.range",
+            "retrievable": false,
+            "parameters": {
+                "instance": "volume",
+                "random_access": true
+            }
+        }
+    ],
+    "device_info": {
+        "manufacturer": "Xiaomi",
+        "model": "0",
+        "hw_version": "1.0",
+        "sw_version": "1.0"
+    }
+}
