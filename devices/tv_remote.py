@@ -26,7 +26,7 @@ def action(capability_type, instance, value, relative):
 
 
 def execute_command(name, repeats=1):
-    repeats = math.fabs(repeats)
+    repeats = int(math.fabs(repeats))
     if repeats > 10:
         repeats = 10
     for command in commands:
