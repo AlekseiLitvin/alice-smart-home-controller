@@ -21,7 +21,7 @@ def action(capability_type, instance, value, relative):
             execute_command("vol+", value)
         else:
             execute_command("vol-", value)
-    if capability_type == "devices.capabilities.toggle":
+    if capability_type == "devices.capabilities.mode":
         execute_command("hdmi")
 
 
