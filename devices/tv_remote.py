@@ -8,6 +8,10 @@ token = os.environ['TV_TOKEN']
 remote = miio.ChuangmiIr(ip=ip, token=token)
 
 
+def query(capability_type, instance):
+    return True
+
+
 def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
         execute_command("power")
