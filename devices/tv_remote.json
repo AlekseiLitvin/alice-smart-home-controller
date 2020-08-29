@@ -7,10 +7,7 @@
     "capabilities": [
         {
             "type": "devices.capabilities.on_off",
-            "retrievable": true,
-            "parameters": {
-                "instance": "on"
-            }
+            "retrievable": false
         },
         {
             "type": "devices.capabilities.mode",
