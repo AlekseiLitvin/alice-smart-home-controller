@@ -23,6 +23,7 @@ def action(capability_type, instance, value, relative):
             execute_command("vol-", value)
     if capability_type == "devices.capabilities.mode":
         execute_command("hdmi")
+    return "DONE"
 
 
 def execute_command(name, repeats=1):

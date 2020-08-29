@@ -14,13 +14,13 @@ def query(capability_type, instance):
 def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
         execute_command("power")
+    return "DONE"
 
 
 def execute_command(name):
     for command in commands:
         if command['name'] == name:
             remote.play_raw(command['code'])
-
 
 
 commands = [
