@@ -1,0 +1,19 @@
+{
+    "name": "Настроенье",
+    "description": "Инфрокрасный пульт от гирлянды",
+    "room": "Берлога",
+    "type": "devices.types.media_device.receiver",
+    "retrievable": false,
+    "capabilities": [
+        {
+            "type": "devices.capabilities.on_off",
+            "retrievable": false
+        }
+    ],
+    "device_info": {
+        "manufacturer": "Xiaomi",
+        "model": "0",
+        "hw_version": "1.0",
+        "sw_version": "1.0"
+    }
+}

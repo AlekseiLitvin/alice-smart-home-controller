@@ -4,8 +4,8 @@ import time
 
 import miio
 
-ip = os.environ['TV_IP']
-token = os.environ['TV_TOKEN']
+ip = os.environ['REMOTE_IP']
+token = os.environ['REMOTE_TOKEN']
 remote = miio.ChuangmiIr(ip=ip, token=token)
 
 
