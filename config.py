@@ -9,7 +9,8 @@ TOKENS_DIRECTORY = "tokens"
 DEVICES_DIRECTORY = "devices"
 
 
-# Uncomment to enable logging
+ENABLE_CONSOLE_LOGGING = False
+
 LOG_FILE = f"/home/pi/Desktop/logs/alice{datetime.datetime.now()}.log"
 LOG_LEVEL = logging.DEBUG
 LOG_FORMAT = "%(asctime)s %(message)s"
