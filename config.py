@@ -1,5 +1,6 @@
 import logging
 import os
+import datetime
 
 CLIENT_ID = os.environ['ALICE_HOME_NAME']
 CLIENT_SECRET = os.environ['ALICE_CLIENT_SECRET']
@@ -9,7 +10,7 @@ DEVICES_DIRECTORY = "devices"
 
 
 # Uncomment to enable logging
-LOG_FILE = "/home/pi/Desktop/logs/alice.log"
+LOG_FILE = f"/home/pi/Desktop/logs/alice{datetime.datetime.now()}.log"
 LOG_LEVEL = logging.DEBUG
 LOG_FORMAT = "%(asctime)s %(message)s"
 LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"

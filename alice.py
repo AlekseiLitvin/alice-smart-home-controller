@@ -29,6 +29,11 @@ if hasattr(config, 'LOG_FILE'):
                         filemode='a')
 logger = logging.getLogger()
 
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+logger.addHandler(handler)
+
 # Path to device plugins
 sys.path.insert(0, config.DEVICES_DIRECTORY)
 
