@@ -1,0 +1,21 @@
+{
+    "name": "Игровой режим",
+    "description": "Игровой режим у компьютера",
+    "room": "Берлога",
+    "type": "devices.types.switch",
+    "capabilities": [
+        {
+            "type": "devices.capabilities.on_off",
+            "retrievable": true,
+            "parameters": {
+                "instance": "on"
+            }
+        }
+    ],
+    "device_info": {
+        "manufacturer": "Microsoft",
+        "model": "0",
+        "hw_version": "1.0",
+        "sw_version": "1.0"
+    }
+}
