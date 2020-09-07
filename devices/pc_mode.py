@@ -14,5 +14,5 @@ def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
         global mode
         mode = 'game' if value else 'work'
-        requests.post(f"http://{pc_ip}/mode", data={'mode': mode})
+        requests.post(f"http://{pc_ip}:8000/mode", data={'mode': mode})
         return "DONE"
