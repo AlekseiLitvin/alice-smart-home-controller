@@ -1,6 +1,6 @@
 {
-    "name": "Игровой режим",
-    "description": "Игровой режим у компьютера",
+    "name": "Режим ТВ",
+    "description": "Режим ТВ у компьютера",
     "room": "Берлога",
     "type": "devices.types.switch",
     "capabilities": [
