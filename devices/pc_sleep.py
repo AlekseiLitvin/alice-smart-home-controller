@@ -17,5 +17,6 @@ def query(capability_type, instance):
 
 def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
+        requests.post(f"http://{pc_ip}:8000/mode", data={'mode': 'work'})
         requests.post(f"http://{pc_ip}:8000/mode", data={'mode': 'sleep'})
         return "DONE"
