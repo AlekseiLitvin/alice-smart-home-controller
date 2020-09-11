@@ -3,11 +3,13 @@
     "description": "Инфрокрасный пульт от гирлянды",
     "room": "Берлога",
     "type": "devices.types.media_device.receiver",
-    "retrievable": false,
     "capabilities": [
         {
             "type": "devices.capabilities.on_off",
-            "retrievable": false
+            "retrievable": true,
+            "parameters": {
+                "instance": "on"
+            }
         }
     ],
     "device_info": {
