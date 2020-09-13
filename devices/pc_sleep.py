@@ -10,7 +10,7 @@ pc_ip = os.environ['PC_IP']
 def query(capability_type, instance):
     if capability_type == "devices.capabilities.on_off":
         try:
-            resp = requests.get(f"http://{pc_ip}]/healthcheck", timeout=0.2)
+            resp = requests.get(f"http://{pc_ip}]:8000/healthcheck", timeout=0.2)
             return resp.status_code == 200
         except Timeout:
             return False
