@@ -1,24 +1,20 @@
 import requests
 import os
 import time
+from devices import pc_mode
 
-from requests import Timeout
 
 pc_ip = os.environ['PC_IP']
 
 
 def query(capability_type, instance):
-    if capability_type == "devices.capabilities.on_off":
-        try:
-            resp = requests.get(f"http://{pc_ip}]:8000/healthcheck", timeout=0.2)
-            return resp.status_code == 200
-        except Timeout:
-            return False
+    return True
 
 
 def action(capability_type, instance, value, relative):
     if capability_type == "devices.capabilities.on_off":
         requests.post(f"http://{pc_ip}:8000/mode", data={'mode': 'work'})
+        pc_mode.mode = "work"
         time.sleep(1)
         requests.post(f"http://{pc_ip}:8000/mode", data={'mode': 'sleep'})
         return "DONE"
