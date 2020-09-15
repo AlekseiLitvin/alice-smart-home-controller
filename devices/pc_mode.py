@@ -6,6 +6,7 @@ mode = "work"
 
 
 def query(capability_type, instance):
+    global mode
     if capability_type == "devices.capabilities.on_off":
         return mode == 'game'
 
