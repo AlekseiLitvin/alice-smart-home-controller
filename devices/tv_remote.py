@@ -23,7 +23,8 @@ def action(capability_type, instance, value, relative):
     global isOn
     if capability_type == "devices.capabilities.on_off":
         execute_command("power")
-        isOn = not isOn
+        if value != isOn:
+            isOn = not isOn
     if capability_type == "devices.capabilities.range":
         if value >= 0:
             execute_command("vol+", value)
