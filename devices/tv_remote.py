@@ -8,14 +8,22 @@ ip = os.environ['REMOTE_IP']
 token = os.environ['REMOTE_TOKEN']
 remote = miio.ChuangmiIr(ip=ip, token=token)
 
+isOn = False
+
 
 def query(capability_type, instance):
-    return True
+    global isOn
+    if capability_type == "devices.capabilities.on_off":
+        return isOn
+    else:
+        return True
 
 
 def action(capability_type, instance, value, relative):
+    global isOn
     if capability_type == "devices.capabilities.on_off":
         execute_command("power")
+        isOn = not isOn
     if capability_type == "devices.capabilities.range":
         if value >= 0:
             execute_command("vol+", value)
