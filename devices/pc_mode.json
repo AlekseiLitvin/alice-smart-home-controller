@@ -1,6 +1,6 @@
 {
-    "name": "Режим ТВ",
-    "description": "Режим ТВ у компьютера",
+    "name": "ТВ Режим",
+    "description": "ТВ Режим у компьютера",
     "room": "Берлога",
     "type": "devices.types.switch",
     "capabilities": [
